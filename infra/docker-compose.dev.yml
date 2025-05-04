@@ -1,0 +1,35 @@
+version: "3.4"
+
+services:
+  portainer:
+    image: portainer/portainer
+    container_name: SR-portainer
+    restart: "on-failure:5"
+    ports:
+      - "4343:9000"
+    volumes:
+      - sr_portainer_data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  postgres:
+    image: postgres:15
+    container_name: SR-postgres-server
+    restart: "on-failure:5"
+    deploy:
+      resources:
+        limits:
+          memory: 2g
+        reservations:
+          memory: 1g
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=mydb
+    ports:
+      - "5432:5432"
+    volumes:
+      - sr_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  sr_postgres_data:
+  sr_portainer_data:
