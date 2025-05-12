@@ -1,0 +1,3 @@
+-E comum CRUDs de Java utilizarem operações async?
+-Padrão Result<Exception, Object>?
+-É mais comum CQRS ou o uso de services?

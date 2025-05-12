@@ -44,7 +44,7 @@ https://eclipseide.org/
 Eclipse Plugins
 https://marketplace.eclipse.org/
 PostgreSQL
-https://www.postgresql.org/
+Rodado em docker, v15
 DBeaver
 https://dbeaver.io/download/
 Spring

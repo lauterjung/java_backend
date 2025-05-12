@@ -23,3 +23,6 @@
 - [ ] Criar telas e componentes
 - [ ] Consumo do backend
 - [ ] Roteamento
+
+# Pendências
+- [ ] Melhorar como a coluna idade é tratada no banco

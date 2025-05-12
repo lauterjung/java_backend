@@ -1,0 +1,26 @@
+application-dev.properties
+# Hibernate Configuration
+spring.jpa.hibernate.ddl-auto=create
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+spring.datasource.initialization-mode=always
+spring.jpa.show-sql=true   
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+
+run program
+
+docker exec -it SR-postgres-server  bash
+pg_dump -s -U admin -d migrationdb > /var/lib/postgresql/data/V1__init_schema.sql
+exit
+
+docker cp SR-postgres-server:/var/lib/postgresql/data/V1__init_schema.sql C:\Users\miguel.lauterjung\Desktop\V1__init_schema.sql
+
+docker exec -it SR-postgres-server  bash
+rm /var/lib/postgresql/data/V1__init_schema.sql
+exit
+
+# Database Configuration
+spring.datasource.url=jdbc:postgresql://localhost:5432/migrationdb
+spring.datasource.username=x
+spring.datasource.password=x
+spring.jpa.hibernate.ddl-auto=create
+spring.jpa.show-sql=true

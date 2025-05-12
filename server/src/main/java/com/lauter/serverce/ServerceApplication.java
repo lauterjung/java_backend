@@ -9,7 +9,7 @@ public class ServerceApplication {
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(ServerceApplication.class, args);
-		var oderService = context.getBean(OrderService.class);
+		var orderService = context.getBean(OrderService.class);
 	}
 
 }
