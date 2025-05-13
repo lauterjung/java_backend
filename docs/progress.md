@@ -23,3 +23,15 @@ Notas:
 -dificuldades com o DBeaver para exibir todos os bancos de dados (não achava o meu banco)
 -o EF do C# é mais automático. No Java as migrações precisam ser mais manuais, com scripts SQL
 -service não foi uma boa escolha de nome. Conflita com Service do Java e do PostgreeSQL
+
+Dia 4
+-Tentativa de implementar OData (desisti)
+-Global exception handler
+-Logs
+-Adição de colunas ENUM
+-DTOs e mapeamento
+Notas: 
+-muita dificuldade para implementar o OData. Muito tempo investido e cheguei a desistir
+-precisa ajustar os retornos do swagger
+
+Dia 5

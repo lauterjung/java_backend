@@ -1,11 +1,16 @@
 package com.lauter.serverce.model.users;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.UUID;
+
+import com.lauter.serverce.enums.users.Gender;
+import com.lauter.serverce.enums.users.Theme;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,10 +35,21 @@ public class User {
 	private String email;
 
 	@Schema(description = "The user's date of birth")
-	private Date dateOfBirth;
+	private LocalDate dateOfBirth;
 
 	@Schema(description = "The age of the user")
 	private int age;
+
+	@Schema(description = "The user's phone number")
+	private String phoneNumber;
+
+	@Enumerated(EnumType.STRING)
+	@Schema(description = "The gender of the user")
+	private Gender gender;
+
+	@Enumerated(EnumType.STRING)
+	@Schema(description = "The theme preference of the user")
+	private Theme theme;
 
 	public User() {
 	}

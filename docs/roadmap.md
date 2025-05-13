@@ -14,9 +14,10 @@
 - [x] Adicionar dependências (Spring Web, Spring Data JPA, Spring Security, PostgreSQL Driver)
 - [~] Design do DB (Spring Data JPA)
 - [x] Criar a API e endpoints
-- [ ] Logs
+- [x] Logs
 - [ ] Autenticação
 - [ ] Validação de inputs
+- [ ] Query complexa (QueryDSL + Spring Data JPA)
 
 # Front-end
 - [ ] Iniciar projeto
@@ -27,3 +28,4 @@
 
 # Pendências
 - [ ] Melhorar como a coluna idade é tratada no banco
+- [ ] OData

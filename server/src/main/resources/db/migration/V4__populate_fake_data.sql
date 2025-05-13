@@ -1,5 +1,11 @@
--- Users
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+-- Users
+
+CREATE TEMP TABLE temp_names (
+    id UUID,
+    name VARCHAR(255),
+    email VARCHAR(255)
+);
 
 WITH first_names AS (
     SELECT unnest(ARRAY[
@@ -17,25 +23,38 @@ last_names AS (
     ]) AS last_name
 )
 
-INSERT INTO users (id, name, email, age, date_of_birth)
+INSERT INTO temp_names (id, name, email)
 SELECT
     uuid_generate_v4() AS id,
-    CONCAT(f.first_name, ' ', l.last_name) AS name,
-    LOWER(CONCAT(f.first_name, '.', l.last_name, '@example.com')) AS email,
+    CONCAT(fn.first_name, ' ', ln.last_name) AS name,
+    LOWER(CONCAT(fn.first_name, '.', ln.last_name, '@example.com')) AS email
+FROM generate_series(1, 100) AS gs
+CROSS JOIN (SELECT first_name FROM first_names LIMIT 100) fn
+CROSS JOIN (SELECT last_name FROM last_names LIMIT 100) ln
+ORDER BY random();
+
+INSERT INTO users (id, name, email, age, date_of_birth, phone_number, gender, theme)
+SELECT
+    tn.id,
+    tn.name,
+    tn.email,
     (FLOOR(18 + random() * (65 - 18 + 1)))::int AS age,
-    (
-        CURRENT_DATE - 
-        ((FLOOR(18 + random() * (65 - 18 + 1)))::int * INTERVAL '1 year') - 
-        (random() * INTERVAL '365 days')
-    )::date AS date_of_birth
-FROM generate_series(1, 100),
-     LATERAL (SELECT first_name FROM first_names ORDER BY random() LIMIT 1) f,
-     LATERAL (SELECT last_name FROM last_names ORDER BY random() LIMIT 1) l;
+    TO_DATE(
+        CONCAT(
+            (CURRENT_DATE - INTERVAL '1 year' * (FLOOR(18 + random() * (65 - 18 + 1)))::int)::date, ' ',
+            (FLOOR(random() * 12) + 1)::int, '-',
+            (FLOOR(random() * 31) + 1)::int
+        ), 'YYYY-MM-DD') AS date_of_birth,
+    LPAD(FLOOR(random() * 10000000000)::text, 10, '0') AS phone_number,
+    CASE
+        WHEN tn.name LIKE '%Alice%' OR tn.name LIKE '%Diana%' OR tn.name LIKE '%Eva%' THEN 'FEMALE'::gender
+        WHEN tn.name LIKE '%Bob%' OR tn.name LIKE '%Carlos%' OR tn.name LIKE '%Frank%' THEN 'MALE'::gender
+        ELSE 'OTHER'::gender
+    END AS gender,
+    CASE WHEN random() < 0.5 THEN 'LIGHT_MODE'::theme ELSE 'DARK_MODE'::theme END AS theme
+FROM temp_names tn;
 
 -- Job Postings
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
-
--- Create and insert 30 job postings
 INSERT INTO job_postings (id, name)
 SELECT uuid_generate_v4(), service_name
 FROM unnest(ARRAY[
