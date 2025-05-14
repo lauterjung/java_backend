@@ -47,11 +47,11 @@ SELECT
         ), 'YYYY-MM-DD') AS date_of_birth,
     LPAD(FLOOR(random() * 10000000000)::text, 10, '0') AS phone_number,
     CASE
-        WHEN tn.name LIKE '%Alice%' OR tn.name LIKE '%Diana%' OR tn.name LIKE '%Eva%' THEN 'FEMALE'::gender
-        WHEN tn.name LIKE '%Bob%' OR tn.name LIKE '%Carlos%' OR tn.name LIKE '%Frank%' THEN 'MALE'::gender
-        ELSE 'OTHER'::gender
+        WHEN tn.name LIKE '%Alice%' OR tn.name LIKE '%Diana%' OR tn.name LIKE '%Eva%' THEN 'FEMALE'
+        WHEN tn.name LIKE '%Bob%' OR tn.name LIKE '%Carlos%' OR tn.name LIKE '%Frank%' THEN 'MALE'
+        ELSE 'OTHER'
     END AS gender,
-    CASE WHEN random() < 0.5 THEN 'LIGHT_MODE'::theme ELSE 'DARK_MODE'::theme END AS theme
+    CASE WHEN random() < 0.5 THEN 'LIGHT_MODE' ELSE 'DARK_MODE' END AS theme
 FROM temp_names tn;
 
 -- Job Postings

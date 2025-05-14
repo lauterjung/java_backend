@@ -48,6 +48,7 @@ public class User {
 	private Gender gender;
 
 	@Enumerated(EnumType.STRING)
+	@Column(columnDefinition = "gender")
 	@Schema(description = "The theme preference of the user")
 	private Theme theme;
 

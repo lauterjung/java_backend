@@ -8,9 +8,13 @@ import com.lauter.serverce.enums.users.Gender;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Schema(name = "CreateUser", description = "Representation of a user")
 public class CreateUserDTO {
 	@Schema(description = "The name of the user")
@@ -27,14 +31,6 @@ public class CreateUserDTO {
 	private String phoneNumber;
 
 	@Enumerated(EnumType.STRING)
-	@Schema(description = "The gender of the user")
+	@Schema(description = "The gender of the user", defaultValue = "MALE | FEMALE | OTHER")
 	private Gender gender;
-
-	public CreateUserDTO(String name, String email, LocalDate dateOfBirth, String phoneNumber, Gender gender) {
-		this.name = name;
-		this.email = email;
-		this.dateOfBirth = dateOfBirth;
-		this.phoneNumber = phoneNumber;
-		this.gender = gender;
-	}
 }

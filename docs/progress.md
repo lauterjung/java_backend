@@ -8,8 +8,9 @@ Dia 2
 -Preparo de ambiente
 -Conexão com o pgSQL usando o DBeaver
 -Debug de código na página inicial
--Bastante tempo perdido no marketplace do Eclipse para plugins (não funciona direito)
 -DI / IOC
+Notas
+-Bastante tempo perdido no marketplace do Eclipse para plugins (não funciona direito)
 
 Dia 3
 -Migrações com hibernate
@@ -35,3 +36,7 @@ Notas:
 -precisa ajustar os retornos do swagger
 
 Dia 5
+-Ajustes finais nos retornos do swagger
+-Adição da configuração de CORS
+Notas
+-Problemas com os enums no banco. Salvos agora em varchar

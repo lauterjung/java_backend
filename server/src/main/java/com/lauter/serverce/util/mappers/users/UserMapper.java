@@ -26,5 +26,4 @@ public class UserMapper {
 		user.setDateOfBirth(dto.getDateOfBirth());
 		return user;
 	}
-
 }
