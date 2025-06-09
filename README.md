@@ -37,19 +37,19 @@ Future implementation ideas
 -rabbitmq  
 
 Downloads  
-JDK 21  
+-JDK 21  
 https://adoptium.net/  
-Eclipse  
+-Eclipse  
 https://eclipseide.org/  
-Eclipse Plugins  
+-Eclipse Plugins  
 https://marketplace.eclipse.org/  
-PostgreSQL  
-Docker, v15  
-DBeaver  
+-PostgreSQL  
+Inside Docker, v15  
+-DBeaver  
 https://dbeaver.io/download/  
-Spring  
+-Spring  
 https://docs.spring.io/spring-boot/installing.html#getting-started.installing.cli  
-Chocolatey  
+-Chocolatey  
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))  
-Maven  
+-Maven  
 choco install maven  
