@@ -1,6 +1,6 @@
 # serverce
 Project created to study Java  
-Java backend for a website of job listings  
+Java backend for a website (serverce.com) of job listings  
 
 Technologies:  
 -Java/Spring Boot (back-end)  
